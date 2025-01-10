@@ -1,0 +1,22 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package_maintenance_job:
+    name: A job to check sbt project dependencies maintenance
+    runs-on: ubuntu-latest
+    permissions: # The Dependency Submission API requires write permission
+      contents: write
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+
+      - name: Run snapshot action
+        uses: scalacenter/sbt-dependency-submission@v2
+
+      - name: Check dependencies maintenance
+        id: package-maintenance
+        uses: package-maintenance-dev/github-action@v0.0.1-SNAPSHOT

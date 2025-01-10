@@ -1,9 +1,7 @@
 import sbt._
 import Keys._
-import play.sbt.PlayScala
 
 lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
   .settings(
     name := "MyWebProject",
     version := "0.1.0-SNAPSHOT",
